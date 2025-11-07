@@ -3,6 +3,7 @@ package net.minibruin.tutorialmod.item;
 import net.minecraft.world.item.Item;
 import net.minibruin.tutorialmod.TutorialMod;
 import net.minibruin.tutorialmod.item.custom.ChiselItem;
+import net.minibruin.tutorialmod.item.custom.FuelItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -21,6 +22,12 @@ public class ModItems {
 
     public static final DeferredItem<Item> RADISH = ITEMS.register("radish",
             ()->new Item(new Item.Properties().food(ModFoodProperties.RADISH)));
+
+    public static final DeferredItem<Item> FROSTFIRE_ICE = ITEMS.register("frostfire_ice",
+            () -> new FuelItem(new Item.Properties(), 800));
+
+    public static final DeferredItem<Item> STARLIGHT_ASHES = ITEMS.register("starlight_ashes",
+            ()->new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
