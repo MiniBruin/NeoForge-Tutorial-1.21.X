@@ -6,9 +6,11 @@ import net.minecraft.world.level.block.Block;
 import net.minibruin.tutorialmod.TutorialMod;
 import net.minibruin.tutorialmod.block.ModBlocks;
 import net.minibruin.tutorialmod.item.ModItems;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -31,6 +33,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(ModBlocks.BISMUTH_DOOR.asItem());
 
+        handheldItem(ModItems.BISMUTH_SWORD);
+        handheldItem(ModItems.BISMUTH_PICKAXE);
+        handheldItem(ModItems.BISMUTH_SHOVEL);
+        handheldItem(ModItems.BISMUTH_AXE);
+        handheldItem(ModItems.BISMUTH_HOE);
     }
 
     public void buttonItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock){
@@ -49,5 +56,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.withExistingParent(block.getId().getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall", ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID,
                         "block/" + baseBlock.getId().getPath()));
+    }
+
+
+    private ItemModelBuilder handheldItem(DeferredItem<?> item){
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.parse("item/handheld")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID,"item/" + item.getId().getPath()));
     }
 }
