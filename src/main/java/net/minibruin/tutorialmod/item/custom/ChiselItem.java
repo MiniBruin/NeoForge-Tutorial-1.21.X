@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minibruin.tutorialmod.block.ModBlocks;
+import net.minibruin.tutorialmod.component.ModDataComponents;
 
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,9 @@ public class ChiselItem extends Item {
                 context.getItemInHand().hurtAndBreak(1, ((ServerLevel) level),context.getPlayer(),
                         item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
 
-            level.playSound(null, context.getClickedPos(), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS);
+                level.playSound(null, context.getClickedPos(), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS);
+
+                context.getItemInHand().set(ModDataComponents.COORDINATES, context.getClickedPos());
             }
         }
 
@@ -60,6 +63,11 @@ public class ChiselItem extends Item {
         } else {
             tooltipComponents.add(Component.translatable("tooltip.tutorialmod.chisel"));
         }
+
+        if(stack.get(ModDataComponents.COORDINATES) != null){
+            tooltipComponents.add(Component.literal("Last Block changed at " +  stack.get(ModDataComponents.COORDINATES)));
+        }
+
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }
