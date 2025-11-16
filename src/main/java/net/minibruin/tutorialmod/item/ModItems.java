@@ -6,6 +6,7 @@ import net.minibruin.tutorialmod.TutorialMod;
 import net.minibruin.tutorialmod.item.custom.ChiselItem;
 import net.minibruin.tutorialmod.item.custom.FuelItem;
 import net.minibruin.tutorialmod.item.custom.HammerItem;
+import net.minibruin.tutorialmod.item.custom.ModArmorItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -58,7 +59,7 @@ public class ModItems {
                     .attributes(PickaxeItem.createAttributes(ModToolTiers.BISMUTH, 7, -3.5f))));
 
     public static final DeferredItem<ArmorItem> BISMUTH_HELMET = ITEMS.register("bismuth_helmet",
-            () -> new ArmorItem(ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+            () -> new ModArmorItem(ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(19))));
     public static final DeferredItem<ArmorItem> BISMUTH_CHESTPLATE = ITEMS.register("bismuth_chestplate",
             () -> new ArmorItem(ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
@@ -69,9 +70,6 @@ public class ModItems {
     public static final DeferredItem<ArmorItem> BISMUTH_BOOTS = ITEMS.register("bismuth_boots",
             () -> new ArmorItem(ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(19))));
-//    public static final DeferredItem<ArmorItem> BISMUTH_BODY = ITEMS.register("bismuth_body",
-//            () -> new ArmorItem(ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, ArmorItem.Type.BODY,
-//                    new Item.Properties().durability(ArmorItem.Type.BODY.getDurability(19))));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
