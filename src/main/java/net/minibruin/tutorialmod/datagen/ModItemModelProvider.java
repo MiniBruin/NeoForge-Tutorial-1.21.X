@@ -67,7 +67,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.BISMUTH_CHESTPLATE);
         trimmedArmorItem(ModItems.BISMUTH_LEGGINGS);
         trimmedArmorItem(ModItems.BISMUTH_BOOTS);
-//        trimmedArmorItem(ModItems.BISMUTH_BODY);
+
+        basicItem(ModItems.BISMUTH_HORSE_ARMOR.get());
 
 
     }
